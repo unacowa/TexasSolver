@@ -26,7 +26,18 @@ vector<PrivateCards> PrivateRangeConverter::rangeStr2Cards(string range_str, vec
 
         int range_len = one_range.length();
         // TODO finish here , convert str to a PrivateRanges[]
-        if(range_len == 3){
+	if(range_len == 4){
+	    std::string c1;
+	    std::string c2;
+	    c1.push_back(one_range.at(0));
+	    c1.push_back(one_range.at(1));
+	    c2.push_back(one_range.at(2));
+	    c2.push_back(one_range.at(3));
+	    int card1 = Card::strCard2int(c1);
+	    int card2 = Card::strCard2int(c2);
+	    this_card = PrivateCards(card1,card2,weight);
+	    private_cards.push_back(this_card);
+	}else if(range_len == 3){
             if(one_range.at(2) == 's'){
                 char rank1 = one_range.at(0);
                 char rank2 = one_range.at(1);
